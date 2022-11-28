@@ -20,6 +20,9 @@ export function renderTodo(todo, handleComplete) {
     div.append(p);
 
     // add event listener for click and call handleComplete function
+    div.addEventListener('click', async (id) => {
+        await handleComplete(id);
+    });
 
     // return the div
     return div;
