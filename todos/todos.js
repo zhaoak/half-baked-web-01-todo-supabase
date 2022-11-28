@@ -23,7 +23,7 @@ todoForm.addEventListener('submit', async (e) => {
     const formData = new FormData(todoForm);
 
     // on submit, create a todo, reset the form, and display the todos
-    createTodo(formData.get('todo'));
+    await createTodo(formData.get('todo'));
     await displayTodos();
 });
 
@@ -58,6 +58,8 @@ logoutButton.addEventListener('click', () => {
 
 deleteButton.addEventListener('click', async () => {
     // delete all todos
+    await deleteAllTodos();
     // modify state to match
     // re displayTodos
+    await displayTodos();
 });
