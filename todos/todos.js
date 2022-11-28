@@ -20,11 +20,12 @@ todoForm.addEventListener('submit', async (e) => {
     const formData = new FormData(todoForm);
 
     // on submit, create a todo, reset the form, and display the todos
-    const newTodo = { todo: formData.get('todo') };
-    createTodo(newTodo);
+    createTodo(formData.get('todo'));
+    getTodos();
 });
 
 // create todo state
+let todoList = [];
 
 // add async complete todo handler function
 // call completeTodo
