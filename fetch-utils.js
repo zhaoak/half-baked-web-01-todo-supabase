@@ -23,7 +23,7 @@ export async function deleteAllTodos() {
     // delete all todos for this user in supabase
     const response = await client.from('todos').delete().eq('user_id', client.auth.user().id);
     // once you have a response from supabase, comment this back in:
-    // return checkError(response);
+    return checkError(response);
 }
 
 export async function getTodos() {

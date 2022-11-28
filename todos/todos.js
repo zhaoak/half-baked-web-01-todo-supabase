@@ -48,8 +48,6 @@ async function displayTodos() {
         // append to .todos
         todosEl.append(await renderTodo(todo, handleComplete, todo.id));
     }
-
-    console.log(todoList);
 }
 
 // add page load function
