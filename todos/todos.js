@@ -25,12 +25,16 @@ todoForm.addEventListener('submit', async (e) => {
     // on submit, create a todo, reset the form, and display the todos
     await createTodo(formData.get('todo'));
     await displayTodos();
+    todoForm.reset();
 });
 
 // add async complete todo handler function
-// call completeTodo
-// swap out todo in array
-// call displayTodos
+async function markComplete() {
+    // call completeTodo
+    await completeTodo(2565);
+    // swap out todo in array
+    // call displayTodos
+}
 
 async function displayTodos() {
     todoList = await getTodos();
@@ -42,6 +46,8 @@ async function displayTodos() {
         // append to .todos
         todosEl.append(renderTodo(todo, 'to do, ironically'));
     }
+
+    console.log(todoList);
 }
 
 // add page load function
@@ -49,6 +55,7 @@ window.addEventListener('load', async () => {
     // fetch the todos and store in state
     todoList = await getTodos();
     // call displayTodos
+    await markComplete();
     await displayTodos();
 });
 
