@@ -1,4 +1,4 @@
-export function renderTodo(todo, handleComplete) {
+export function renderTodo(todo, handleComplete, id) {
     // create a div and a p tag
     const div = document.createElement('div');
     const p = document.createElement('p');
@@ -20,7 +20,7 @@ export function renderTodo(todo, handleComplete) {
     div.append(p);
 
     // add event listener for click and call handleComplete function
-    div.addEventListener('click', async (id) => {
+    div.addEventListener('click', async () => {
         await handleComplete(id);
     });
 

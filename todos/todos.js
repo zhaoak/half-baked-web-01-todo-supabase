@@ -34,7 +34,9 @@ async function handleComplete(id) {
     // call completeTodo
     await completeTodo(id);
     // swap out todo in array
+    todoList = await getTodos();
     // call displayTodos
+    await displayTodos();
 }
 
 async function displayTodos() {
@@ -44,7 +46,7 @@ async function displayTodos() {
     for (let todo of todoList) {
         // call render function, pass in state and complete handler function!
         // append to .todos
-        todosEl.append(renderTodo(todo, handleComplete(todo.id)));
+        todosEl.append(await renderTodo(todo, handleComplete, todo.id));
     }
 
     console.log(todoList);
