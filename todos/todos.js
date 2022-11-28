@@ -21,7 +21,6 @@ todoForm.addEventListener('submit', async (e) => {
 
     // on submit, create a todo, reset the form, and display the todos
     createTodo(formData.get('todo'));
-    getTodos();
 });
 
 // create todo state
@@ -34,14 +33,23 @@ let todoList = [];
 
 async function displayTodos() {
     // clear the container (.innerHTML = '')
+    todosEl.innerHTML = '';
     // display the list of todos,
-    // call render function, pass in state and complete handler function!
-    // append to .todos
+    console.log(todoList);
+    for (let todo of todoList) {
+        // call render function, pass in state and complete handler function!
+        // append to .todos
+        todosEl.append(renderTodo(todo, 'to do, ironically'));
+    }
 }
 
 // add page load function
-// fetch the todos and store in state
-// call displayTodos
+window.addEventListener('load', async () => {
+    // fetch the todos and store in state
+    todoList = await getTodos();
+    // call displayTodos
+    displayTodos();
+});
 
 logoutButton.addEventListener('click', () => {
     logout();
